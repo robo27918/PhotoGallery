@@ -1,5 +1,6 @@
 package com.bignerdranch.android.photogallery
 
+import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -67,21 +69,29 @@ class PhotoGalleryFragment: Fragment()
             val bindDrawable : (Drawable) -> Unit = itemImageView::setImageDrawable
         }
 
-    private class PhotoAdapater (private val galleryItems: List <GalleryItem>)
+    private inner class PhotoAdapater (private val galleryItems: List <GalleryItem>)
         :RecyclerView.Adapter<PhotoHolder> (){
 
         override fun onCreateViewHolder(
             parent:ViewGroup,
             viewType: Int
             ): PhotoHolder {
-                val textView = TextView(parent.context)
-                return PhotoHolder(textView)
+                val view = layoutInflater.inflate(
+                    R.layout.list_item_gallery,
+                    parent,
+                    false
+                ) as ImageView
+                return PhotoHolder(view)
             }
         override fun getItemCount(): Int = galleryItems.size
 
         override fun onBindViewHolder (holder:PhotoHolder , position: Int){
             val galleryItem = galleryItems[position]
-            holder.bindTitle(galleryItem.title)
+            val placeholder: Drawable = ContextCompat.getDrawable(
+                requireContext(),
+                R.drawable.bill_up_close
+            )?:ColorDrawable()
+            holder.bindDrawable(placeholder)
          }
         }
 }
