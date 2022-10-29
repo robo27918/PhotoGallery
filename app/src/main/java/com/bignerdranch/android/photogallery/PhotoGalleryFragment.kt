@@ -101,6 +101,7 @@ class PhotoGalleryFragment: Fragment()
                 R.drawable.bill_up_close
             )?:ColorDrawable()
             holder.bindDrawable(placeholder)
+            thumbnailDownloader.queueThumbnail(holder,galleryItem.url)
          }
         }
 }
