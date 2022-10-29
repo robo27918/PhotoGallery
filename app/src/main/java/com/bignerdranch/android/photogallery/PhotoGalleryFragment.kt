@@ -31,12 +31,16 @@ class PhotoGalleryFragment: Fragment()
 {
     private lateinit var photoGalleryViewModel: PhotoGalleryViewModel
     private lateinit var photoRecyclerView: RecyclerView
+    private lateinit var thumbnailDownloader: ThumbnailDownloader<PhotoHolder>
 
     override fun onCreate(savedInstanceState:Bundle?) {
         super.onCreate(savedInstanceState)
         //add here !!
+        //retainInstance = true
         photoGalleryViewModel =
             ViewModelProvider(this).get(PhotoGalleryViewModel::class.java)
+        thumbnailDownloader = ThumbnailDownloader()
+        lifecycle.addObserver(thumbnailDownloader)
     }
 
     override fun onCreateView (
@@ -64,6 +68,11 @@ class PhotoGalleryFragment: Fragment()
             })
 
     }
+    override fun onDestroy() {
+        super.onDestroy()
+        lifecycle.removeObserver(thumbnailDownloader)
+    }
+
     private class PhotoHolder (itemImageView : ImageView)
         :RecyclerView.ViewHolder(itemImageView){
             val bindDrawable : (Drawable) -> Unit = itemImageView::setImageDrawable
