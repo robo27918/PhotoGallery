@@ -33,7 +33,9 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.preference:preference-ktx:1.2.1'
+    implementation "androidx.lifecycle:lifecycle-viewmodel:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1"
+    implementation 'androidx.preference:preference-ktx:1.2.0'
     implementation 'androidx.legacy:legacy-preference-v14:1.0.0'
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
