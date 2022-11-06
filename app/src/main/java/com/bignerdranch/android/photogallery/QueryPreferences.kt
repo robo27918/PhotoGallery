@@ -1,7 +1,7 @@
 package com.bignerdranch.android.photogallery
 
 import android.content.Context
-import androidx.preference.Preference
+
 import androidx.preference.PreferenceManager
 
 private const val PREF_SEARCH_QUERY = "searchQuery"
