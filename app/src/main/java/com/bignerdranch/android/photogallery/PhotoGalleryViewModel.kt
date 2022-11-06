@@ -8,7 +8,7 @@ class PhotoGalleryViewModel(private val app: Application): AndroidViewModel(app)
     private val flickrFetchr = FlickrFetchr()
     private val mutableSearchTerm = MutableLiveData<String>()
     init{
-        mutableSearchTerm.value =QueryPreferences.getStoredQuery(app)
+        mutableSearchTerm.value = QueryPreferences.getStoredQuery(app)
         galleryItemLiveData = Transformations.switchMap(mutableSearchTerm){searhTerm ->
             flickrFetchr.searchPhotos(searhTerm)
         }
