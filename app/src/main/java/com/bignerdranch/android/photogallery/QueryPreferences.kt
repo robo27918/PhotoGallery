@@ -1,10 +1,10 @@
 package com.bignerdranch.android.photogallery
 
 import android.content.Context
-import android.preference.PreferenceManager
+import androidx.preference.PreferenceManager
 import retrofit2.http.Query
 
-private const val PREF_SEARCH_QUERY = "searchQuert"
+private const val PREF_SEARCH_QUERY = "searchQuery"
 class QueryPreferences {
     fun getStoredQuery (context: Context): String {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
