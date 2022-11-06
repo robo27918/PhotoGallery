@@ -1,6 +1,8 @@
 package com.bignerdranch.android.photogallery
 
 import android.content.Context
+import android.provider.Settings.Global.putString
+import androidx.core.content.edit
 import androidx.preference.PreferenceManager
 import retrofit2.http.Query
 
@@ -10,11 +12,10 @@ object QueryPreferences {
         val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         return prefs.getString(PREF_SEARCH_QUERY, "")!!
     }
-
-    fun setStoredQuery (context:Context, query: String){
+    fun setStoredQuery(context: Context, query: String) {
         PreferenceManager.getDefaultSharedPreferences(context)
-            .edit()
-            .putString(PREF_SEARCH_QUERY,query)
-            .apply()
+            .edit {
+                putString(PREF_SEARCH_QUERY, query)
+            }
     }
 }
