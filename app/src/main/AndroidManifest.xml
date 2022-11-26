@@ -29,7 +29,7 @@
         <receiver android:name=".NotificationReceiver"
             android:permission="com.bignerdranch.android.photogallery.PRIVATE"
             android:exported="false">
-            <intent-filter>
+            <intent-filter android:priority="-999">
                 <action
                     android:name="com.bignerdranch.android.photogallery.SHOW_NOTIFICATION"/>
             </intent-filter>
