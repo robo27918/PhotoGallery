@@ -64,5 +64,6 @@ class PollWorker (val context : Context, workerParams: WorkerParameters)
     companion object{
         const val ACTION_SHOW_NOTIFICATION =
             "com.bignerdranch.android.photogallery.SHOW_NOTIFICATION"
+        const val PERM_PRIVATE = "com.bignerdranch.android.photgallery.PRIVATE"
     }
 }
